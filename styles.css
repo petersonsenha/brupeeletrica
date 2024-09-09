@@ -9,6 +9,9 @@ body {
     background-color: #101010;
     color: #f4f4f4;
     line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -35,10 +38,6 @@ nav ul {
     gap: 20px;
 }
 
-nav ul li {
-    margin-right: 10px;
-}
-
 nav ul li a {
     color: #f4f4f4;
     text-decoration: none;
@@ -53,6 +52,7 @@ nav ul li a:hover {
 
 section {
     padding: 40px 0;
+    flex: 1;
 }
 
 h2 {
@@ -61,15 +61,10 @@ h2 {
     margin-bottom: 20px;
 }
 
-p {
-    color: #dcdcdc;
-    text-align: center;
-    font-size: 1.1rem;
-}
-
+/* Grid Dinâmico */
 #servicos .servicos-grid {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
 }
 
@@ -81,6 +76,14 @@ p {
     transition: transform 0.3s ease;
 }
 
+.servico img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
 .servico:hover {
     transform: scale(1.05);
 }
@@ -89,16 +92,6 @@ p {
     color: #32cd32;
     margin-bottom: 10px;
     font-size: 1.5rem;
-}
-
-.servico p {
-    color: #dcdcdc;
-}
-
-.preco {
-    color: #ffe600;
-    font-size: 1.2rem;
-    font-weight: bold;
 }
 
 form {
@@ -147,6 +140,35 @@ button:hover {
 footer {
     background: #111;
     color: #f4f4f4;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-button {
     text-align: center;
-    padding: 10px 0;
+    color: #f4f4f4;
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-button i {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.footer-button:hover {
+    color: #32cd32;
 }
