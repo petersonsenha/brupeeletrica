@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brupe Tecnologia</title>
-    <meta name="description" content="Serviços de eletricista residencial de alto padrão. Especialistas em chuveiro, elétrica, curto circuito e redução de conta de luz alta.">
+    <meta name="description" content="Serviços de eletricista residencial de alto padrão. Especialistas em instalação elétrica, automação residencial e soluções inteligentes.">
     <!-- Fonte Google 'Muli' -->
     <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500&display=swap" rel="stylesheet">
     <!-- Incluindo Particles.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Ícones do Font Awesome para o LinkedIn -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         /* Reset e estilos base */
         * {
@@ -157,30 +159,41 @@
         #services h2 {
             text-align: center;
             font-size: 1.8em;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+        }
+        #services p.intro-text {
+            text-align: center;
+            font-size: 1em;
+            margin-bottom: 40px;
+            color: #666;
         }
         .service-category {
             margin-bottom: 40px;
         }
         .service-category h3 {
             font-size: 1.5em;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-align: center;
         }
+        .service-category p.intro-text {
+            text-align: center;
+            font-size: 1em;
+            margin-bottom: 20px;
+            color: #666;
+        }
         .service-card {
-            width: 90vw;
+            width: 100%;
+            max-width: 1200px;
             height: auto;
             display: flex;
             align-items: center;
-            background: #f7f8fc;
+            background: transparent;
             margin: 0 auto;
             overflow: hidden;
-            box-shadow: inset 0 0 1rem rgba(0, 0, 0, 0.2), 0 1rem 1rem rgba(0, 0, 0, 0.15);
-            border-radius: 5px;
         }
         .service-card__div {
             display: flex;
-            margin: 2rem;
+            margin: 0 auto;
             touch-action: none;
             transition: transform 0.3s ease;
         }
@@ -190,7 +203,7 @@
             cursor: pointer;
             border-radius: 10px;
             background: #ffffff;
-            box-shadow: 0 2rem 2.2rem #E9ECF9;
+            box-shadow: 0 2rem 2.2rem rgba(0, 0, 0, 0.05);
             text-align: center;
         }
         .service-card__item-img {
@@ -225,22 +238,21 @@
         #creators h2 {
             text-align: center;
             font-size: 1.8em;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         .card {
-            width: 90vw;
+            width: 100%;
+            max-width: 1200px;
             height: auto;
             display: flex;
             align-items: center;
-            background: #f7f8fc;
+            background: transparent;
             margin: 0 auto;
             overflow: hidden;
-            box-shadow: inset 0 0 1rem rgba(0, 0, 0, 0.2), 0 1rem 1rem rgba(0, 0, 0, 0.15);
-            border-radius: 5px;
         }
         .card__div {
             display: flex;
-            margin: 2rem;
+            margin: 0 auto;
             touch-action: none;
             transition: transform 0.3s ease;
         }
@@ -250,8 +262,9 @@
             cursor: pointer;
             border-radius: 10px;
             background: #ffffff;
-            box-shadow: 0 2rem 2.2rem #E9ECF9;
+            box-shadow: 0 2rem 2.2rem rgba(0, 0, 0, 0.05);
             text-align: center;
+            position: relative;
         }
         .card__item-img {
             width: 100%;
@@ -267,8 +280,20 @@
         }
         .card__item-text {
             font-weight: 300;
-            padding: 0 1rem;
+            padding: 0 1rem 1rem 1rem;
             font-size: 1rem;
+        }
+        /* Ícone do LinkedIn */
+        .linkedin-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            color: #0077B5;
+            text-decoration: none;
+        }
+        .linkedin-icon:hover {
+            color: #005582;
         }
         /* Responsividade para o carrossel */
         @media (max-width: 768px) {
@@ -342,7 +367,7 @@
         <section id="home">
             <div class="container">
                 <h1>Brupe Tecnologia</h1>
-                <p>Soluções elétricas premium para sua residência</p>
+                <p>Inovando a forma como você interage com sua residência por meio de soluções elétricas inteligentes e automatizadas.</p>
                 <a href="https://wa.me/5541987613692" class="cta-button">Fale Conosco no WhatsApp</a>
             </div>
         </section>
@@ -351,10 +376,12 @@
         <section id="services">
             <div class="container">
                 <h2>Nossos Serviços</h2>
+                <p class="intro-text">Oferecemos soluções completas em elétrica e automação residencial para tornar sua vida mais prática e segura.</p>
 
                 <!-- Categoria: Elétrica -->
                 <div class="service-category">
                     <h3>Elétrica</h3>
+                    <p class="intro-text">Serviços especializados em instalações e manutenções elétricas para sua residência.</p>
                     <div class="service-card">
                         <div class="service-card__div">
                             <!-- Serviço 1 -->
@@ -388,6 +415,7 @@
                 <!-- Categoria: Automação Residencial -->
                 <div class="service-category">
                     <h3>Automação Residencial</h3>
+                    <p class="intro-text">Transforme sua casa em um ambiente inteligente com nossas soluções de automação.</p>
                     <div class="service-card">
                         <div class="service-card__div">
                             <!-- Serviço 1 -->
@@ -429,18 +457,27 @@
                     <div class="card__div">
                         <!-- Criador 1 -->
                         <div class="card__item">
+                            <a href="https://linkedin.com/in/petersonsenha" class="linkedin-icon" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
                             <div class="card__item-img" style="background-image: url('imagens/peterson.jpg');"></div>
                             <h2 class="card__item-title">Peterson Senha</h2>
                             <p class="card__item-text">Especialista em sistemas elétricos e projetos residenciais.</p>
                         </div>
                         <!-- Criador 2 -->
                         <div class="card__item">
+                            <a href="https://linkedin.com/in/wagnerlima" class="linkedin-icon" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
                             <div class="card__item-img" style="background-image: url('imagens/wagner.jpg');"></div>
                             <h2 class="card__item-title">Wagner Lima</h2>
                             <p class="card__item-text">Engenheiro elétrico com foco em automação residencial.</p>
                         </div>
                         <!-- Criador 3 -->
                         <div class="card__item">
+                            <a href="https://linkedin.com/in/brunogobi" class="linkedin-icon" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
                             <div class="card__item-img" style="background-image: url('imagens/bruno.jpg');"></div>
                             <h2 class="card__item-title">Bruno Gobi</h2>
                             <p class="card__item-text">Técnico em eletrônica e desenvolvedor de soluções inteligentes.</p>
@@ -565,64 +602,14 @@
             }
 
             // Inicializa os carrosséis de serviços
-            initCarousel(".service-category:nth-child(1)");
-            initCarousel(".service-category:nth-child(2)");
+            const serviceCategories = document.querySelectorAll('.service-category');
+            serviceCategories.forEach((category, index) => {
+                initCarousel(`.service-category:nth-of-type(${index + 1})`);
+            });
 
             // Carrossel dos criadores
-            const creatorsCardContainer = document.querySelector("#creators .card__div");
-            const creatorsCard = document.querySelector("#creators .card");
-            let creatorsMoving = false;
-            let creatorsMouseLastPosition = 0;
-            let creatorsLastPageX = 0;
-            let creatorsTransformValue = 0;
-            let creatorsTransform = 0;
+            initCarousel("#creators");
 
-            const creatorsGestureStart = (e) => {
-                creatorsMoving = true;
-                creatorsMouseLastPosition = e.pageX || e.touches[0].pageX;
-                creatorsTransform =
-                    window.getComputedStyle(creatorsCardContainer).getPropertyValue("transform") !== "none"
-                        ? window.getComputedStyle(creatorsCardContainer).getPropertyValue("transform").split(",")[4].trim()
-                        : 0;
-            };
-
-            const creatorsGestureMove = (e) => {
-                if (creatorsMoving) {
-                    const currentPosition = e.pageX || e.touches[0].pageX;
-                    const diffX = currentPosition - creatorsMouseLastPosition;
-                    if (currentPosition - creatorsLastPageX > 0) {
-                        if (creatorsTransformValue >= 0) {
-                            return;
-                        }
-                    } else {
-                        const maxTranslateX = -(creatorsCardContainer.scrollWidth - creatorsCard.offsetWidth);
-                        if (creatorsTransformValue <= maxTranslateX) {
-                            return;
-                        }
-                    }
-                    creatorsTransformValue = parseInt(creatorsTransform) + diffX;
-                    creatorsCardContainer.style.transform = `translateX(${creatorsTransformValue}px)`;
-                }
-                creatorsLastPageX = e.pageX || e.touches[0].pageX;
-            };
-
-            const creatorsGestureEnd = () => (creatorsMoving = false);
-
-            if (window.PointerEvent) {
-                creatorsCard.addEventListener("pointerdown", creatorsGestureStart);
-                creatorsCard.addEventListener("pointermove", creatorsGestureMove);
-                creatorsCard.addEventListener("pointerup", creatorsGestureEnd);
-                creatorsCard.addEventListener("pointerleave", creatorsGestureEnd);
-            } else {
-                creatorsCard.addEventListener("mousedown", creatorsGestureStart);
-                creatorsCard.addEventListener("mousemove", creatorsGestureMove);
-                creatorsCard.addEventListener("mouseup", creatorsGestureEnd);
-                creatorsCard.addEventListener("mouseleave", creatorsGestureEnd);
-
-                creatorsCard.addEventListener("touchstart", creatorsGestureStart);
-                creatorsCard.addEventListener("touchmove", creatorsGestureMove);
-                creatorsCard.addEventListener("touchend", creatorsGestureEnd);
-            }
         });
     </script>
 </body>
