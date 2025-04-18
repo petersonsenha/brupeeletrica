@@ -1,88 +1,616 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
+    <!-- Meta tags e scripts -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brupe Elétrica</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Brupe Tecnologia</title>
+    <meta name="description" content="Serviços de eletricista residencial de alto padrão. Especialistas em instalação elétrica, automação residencial e soluções inteligentes.">
+    <!-- Fonte Google 'Muli' -->
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Incluindo Particles.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Ícones do Font Awesome para o LinkedIn -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            font-family: 'Muli', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+            scroll-behavior: smooth; /* Transição suave */
+        }
+
+        /* Particles.js container */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: -1;
+        }
+
+        /* Layout e containers */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header e navegação */
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        .logo a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .menu-icon div {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+        /* Estilos para quando o menu está no modo hamburger */
+        .scrolled .menu-icon {
+            display: flex;
+        }
+        .scrolled nav ul {
+            display: none;
+        }
+        /* Menu mobile */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: flex;
+            }
+            nav ul {
+                display: none;
+            }
+            nav ul.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #fff;
+                width: 200px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            nav ul li {
+                margin: 15px 0;
+                text-align: center;
+            }
+        }
+
+        /* Seção Hero */
+        #home {
+            text-align: center;
+            padding: 60px 0;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #ffd700;
+            color: #333;
+            padding: 20px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .cta-button:hover {
+            background-color: #f0c800;
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Seção de Serviços com Carrossel */
+        #services {
+            padding: 40px 0;
+            background-color: #f0f0f0;
+        }
+        #services h2 {
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        #services p.intro-text {
+            text-align: center;
+            font-size: 1em;
+            margin-bottom: 40px;
+            color: #666;
+        }
+        .service-category {
+            margin-bottom: 40px;
+        }
+        .service-category h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .service-category p.intro-text {
+            text-align: center;
+            font-size: 1em;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        .service-card {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            display: flex;
+            align-items: center;
+            background: transparent;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .service-card__div {
+            display: flex;
+            margin: 0 auto;
+            touch-action: none;
+            transition: transform 0.3s ease;
+        }
+        .service-card__item {
+            width: 16rem;
+            margin: 1rem;
+            cursor: pointer;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0 2rem 2.2rem rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        .service-card__item-img {
+            width: 100%;
+            height: 10rem;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .service-card__item-title {
+            font-weight: 500;
+            font-size: 1.2rem;
+            padding: 1rem 1rem .3rem 1rem;
+        }
+        .service-card__item-text {
+            font-weight: 300;
+            padding: 0 1rem 1rem 1rem;
+            font-size: 1rem;
+        }
+        /* Responsividade para o carrossel */
+        @media (max-width: 768px) {
+            .service-card__item {
+                width: 12rem;
+            }
+        }
+
+        /* Seção dos Criadores com Carrossel */
+        #creators {
+            padding: 40px 0;
+            background-color: #f0f0f0;
+        }
+        #creators h2 {
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        .card {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            display: flex;
+            align-items: center;
+            background: transparent;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .card__div {
+            display: flex;
+            margin: 0 auto;
+            touch-action: none;
+            transition: transform 0.3s ease;
+        }
+        .card__item {
+            width: 16rem;
+            margin: 1rem;
+            cursor: pointer;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0 2rem 2.2rem rgba(0, 0, 0, 0.05);
+            text-align: center;
+            position: relative;
+        }
+        .card__item-img {
+            width: 100%;
+            height: 10rem;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .card__item-title {
+            font-weight: 500;
+            font-size: 1.4rem;
+            padding: 1rem 1rem .3rem 1rem;
+        }
+        .card__item-text {
+            font-weight: 300;
+            padding: 0 1rem 1rem 1rem;
+            font-size: 1rem;
+        }
+        /* Ícone do LinkedIn */
+        .linkedin-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            color: #0077B5;
+            text-decoration: none;
+        }
+        .linkedin-icon:hover {
+            color: #005582;
+        }
+        /* Responsividade para o carrossel */
+        @media (max-width: 768px) {
+            .card__item {
+                width: 12rem;
+            }
+        }
+
+        /* Footer fixo */
+        .fixed-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #ffd700; /* Melhor contraste */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px 0; /* Aumenta a altura */
+            z-index: 1000;
+        }
+        .fixed-footer a {
+            color: #333; /* Texto mais escuro para melhor contraste */
+            text-decoration: none;
+            font-size: 1.5em; /* Aumenta o tamanho da fonte */
+            text-align: center;
+        }
+        .fixed-footer a:hover {
+            color: #000;
+        }
+
+        /* Footer principal */
+        footer {
+            background-color: #333;
+            color: white;
+        }
+        footer .container {
+            padding: 20px 0;
+            text-align: center;
+        }
+        footer p {
+            color: white;
+        }
+    </style>
 </head>
 <body>
+    <div id="particles-js"></div>
+    
     <header>
-        <div class="container">
-            <h1>Brupe Elétrica</h1>
-            <nav>
-                <ul>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav>
+            <div class="logo">
+                <a href="#home">Brupe Tecnologia</a>
+            </div>
+            <div class="menu-icon" id="menu-icon">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul id="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#testimonials">Depoimentos</a></li>
+                <li><a href="#contact">Contato</a></li>
+                <li><a href="#creators">Criadores</a></li>
+                <li><a href="#careers">Trabalhe Conosco</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section id="servicos">
-        <div class="container">
-            <h2>Serviços</h2>
-            <div class="servicos-grid">
-                <div class="servico">
-                    <img src="https://via.placeholder.com/150/0000FF/808080?text=Tomadas" alt="Tomadas e Interruptores">
-                    <h3>Tomadas e Interruptores</h3>
+    <main>
+        <!-- Seção Home -->
+        <section id="home">
+            <div class="container">
+                <h1>Brupe Tecnologia</h1>
+                <p>Inovando a forma como você interage com sua residência por meio de soluções elétricas inteligentes e automatizadas.</p>
+                <a href="https://wa.me/5541987613692" class="cta-button">Fale Conosco no WhatsApp</a>
+            </div>
+        </section>
+
+        <!-- Seção Serviços com Carrossel -->
+        <section id="services">
+            <div class="container">
+                <h2>Nossos Serviços</h2>
+                <p class="intro-text">Oferecemos soluções completas em elétrica e automação residencial para tornar sua vida mais prática e segura.</p>
+
+                <!-- Categoria: Elétrica -->
+                <div class="service-category">
+                    <h3>Elétrica</h3>
+                    <p class="intro-text">Serviços especializados em instalações e manutenções elétricas para sua residência.</p>
+                    <div class="service-card">
+                        <div class="service-card__div">
+                            <!-- Serviço 1 -->
+                            <div class="service-card__item">
+                                <div class="service-card__item-img" style="background-image: url('imagens/instalacao-eletrica.jpg');"></div>
+                                <h2 class="service-card__item-title">Instalação Elétrica</h2>
+                                <p class="service-card__item-text">Projetos e instalações elétricas completas para sua residência.</p>
+                            </div>
+                            <!-- Serviço 2 -->
+                            <div class="service-card__item">
+                                <div class="service-card__item-img" style="background-image: url('imagens/manutencao-eletrica.jpg');"></div>
+                                <h2 class="service-card__item-title">Manutenção Elétrica</h2>
+                                <p class="service-card__item-text">Manutenção preventiva e corretiva em instalações elétricas.</p>
+                            </div>
+                            <!-- Serviço 3 -->
+                            <div class="service-card__item">
+                                <div class="service-card__item-img" style="background-image: url('imagens/painel-eletrico.jpg');"></div>
+                                <h2 class="service-card__item-title">Atualização de Painel</h2>
+                                <p class="service-card__item-text">Atualização e substituição de quadros de distribuição.</p>
+                            </div>
+                            <!-- Serviço 4 -->
+                            <div class="service-card__item">
+                                <div class="service-card__item-img" style="background-image: url('imagens/iluminacao.jpg');"></div>
+                                <h2 class="service-card__item-title">Iluminação</h2>
+                                <p class="service-card__item-text">Instalação e manutenção de sistemas de iluminação.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="servico">
-                    <img src="https://via.placeholder.com/150/32CD32/FFFFFF?text=Iluminação" alt="Iluminação">
-                    <h3>Iluminação</h3>
-                </div>
-                <div class="servico">
-                    <img src="https://via.placeholder.com/150/FFFF00/000000?text=Manutenção" alt="Manutenção Elétrica">
-                    <h3>Manutenção Elétrica</h3>
-                </div>
-                <div class="servico">
-                    <img src="https://via.placeholder.com/150/FF0000/FFFFFF?text=Chuveiro" alt="Chuveiro">
-                    <h3>Chuveiro</h3>
-                </div>
-                <div class="servico">
-                    <img src="https://via.placeholder.com/150/FFA500/FFFFFF?text=Automação" alt="Automação Residencial">
+
+                <!-- Categoria: Automação Residencial -->
+                <div class="service-category">
                     <h3>Automação Residencial</h3>
+                    <p class="intro-text">Transforme sua casa em um ambiente inteligente com nossas soluções de automação.</p>
+                    <div class="service-card">
+                        <div class="service-card__div">
+                            <!-- Serviço 1 -->
+                            <div class="service-card__item">
+                                <div class="service-card__item-img" style="background-image: url('imagens/smart-lighting.jpg');"></div>
+                                <h2 class="service-card__item-title">Iluminação Inteligente</h2>
+                                <p class="service-card__item-text">Automatização de sistemas de iluminação com controle remoto.</p>
+                            </div>
+                            <!-- Serviço 2 -->
+                            <div class="service-card__item">
+                                <div class="service-card__item-img" style="background-image: url('imagens/smart-thermostat.jpg');"></div>
+                                <h2 class="service-card__item-title">Termostatos Inteligentes</h2>
+                                <p class="service-card__item-text">Instalação de termostatos para controle de temperatura.</p>
+                            </div>
+                            <!-- Serviço 3 -->
+                            <div class="service-card__item">
+                                <div class="service-card__item-img" style="background-image: url('imagens/smart-security.jpg');"></div>
+                                <h2 class="service-card__item-title">Segurança Residencial</h2>
+                                <p class="service-card__item-text">Sistemas de segurança e monitoramento inteligentes.</p>
+                            </div>
+                            <!-- Serviço 4 -->
+                            <div class="service-card__item">
+                                <div class="service-card__item-img" style="background-image: url('imagens/home-automation.jpg');"></div>
+                                <h2 class="service-card__item-title">Automação Completa</h2>
+                                <p class="service-card__item-text">Integração de dispositivos para automação total da residência.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Seção dos Criadores com Carrossel -->
+        <section id="creators">
+            <div class="container">
+                <h2>Nossos Criadores</h2>
+                <div class="card">
+                    <div class="card__div">
+                        <!-- Criador 1 -->
+                        <div class="card__item">
+                            <a href="https://linkedin.com/in/petersonsenha" class="linkedin-icon" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <div class="card__item-img" style="background-image: url('imagens/peterson.jpg');"></div>
+                            <h2 class="card__item-title">Peterson Senha</h2>
+                            <p class="card__item-text">Especialista em sistemas elétricos e projetos residenciais.</p>
+                        </div>
+                        <!-- Criador 2 -->
+                        <div class="card__item">
+                            <a href="https://linkedin.com/in/wagnerlima" class="linkedin-icon" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <div class="card__item-img" style="background-image: url('imagens/wagner.jpg');"></div>
+                            <h2 class="card__item-title">Wagner Lima</h2>
+                            <p class="card__item-text">Engenheiro elétrico com foco em automação residencial.</p>
+                        </div>
+                        <!-- Criador 3 -->
+                        <div class="card__item">
+                            <a href="https://linkedin.com/in/brunogobi" class="linkedin-icon" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <div class="card__item-img" style="background-image: url('imagens/bruno.jpg');"></div>
+                            <h2 class="card__item-title">Bruno Gobi</h2>
+                            <p class="card__item-text">Técnico em eletrônica e desenvolvedor de soluções inteligentes.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contato">
-        <div class="container">
-            <h2>Fale Conosco</h2>
-            <form id="contato-form">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="mensagem">Mensagem:</label>
-                <textarea id="mensagem" name="mensagem" required></textarea>
-                
-                <button type="submit">Enviar</button>
-            </form>
-        </div>
-    </section>
+        <!-- Outras seções podem ser adicionadas aqui (Depoimentos, Contato, Trabalhe Conosco) -->
+    </main>
 
+    <!-- Footer fixo com botões -->
+    <div class="fixed-footer">
+        <a href="tel:41987613692">📞 Telefone</a>
+        <a href="#home">🏠 Início</a>
+        <a href="https://wa.me/5541987613692">💬 WhatsApp</a>
+    </div>
+
+    <!-- Footer principal -->
     <footer>
-        <div class="container footer-buttons">
-            <a href="tel:+5541987613692" class="footer-button">
-                <i class="fas fa-phone"></i>
-                <span>Ligar</span>
-            </a>
-            <a href="#top" class="footer-button">
-                <i class="fas fa-home"></i>
-                <span>Início</span>
-            </a>
-            <a href="tel:+5541987613692" class="footer-button">
-                <i class="fab fa-whatsapp"></i>
-                <span>WhatsApp</span>
-            </a>
+        <div class="container">
+            <p>&copy; 2024 Brupe Tecnologia. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuração do particles.js
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#ffd700" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: false },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: "#ffd700", opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+                },
+                retina_detect: true
+            });
+
+            // Menu toggle
+            const menuIcon = document.getElementById('menu-icon');
+            const navLinks = document.getElementById('nav-links');
+            const header = document.querySelector('header');
+
+            menuIcon.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // Scroll event to change menu
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 0) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // JavaScript dos carrosséis
+            function initCarousel(carouselSelector) {
+                const cardContainer = document.querySelector(carouselSelector + " .service-card__div");
+                const card = document.querySelector(carouselSelector + " .service-card");
+                let moving = false;
+                let mouseLastPosition = 0;
+                let lastPageX = 0;
+                let transformValue = 0;
+                let transform = 0;
+
+                const gestureStart = (e) => {
+                    moving = true;
+                    mouseLastPosition = e.pageX || e.touches[0].pageX;
+                    transform =
+                        window.getComputedStyle(cardContainer).getPropertyValue("transform") !== "none"
+                            ? window.getComputedStyle(cardContainer).getPropertyValue("transform").split(",")[4].trim()
+                            : 0;
+                };
+
+                const gestureMove = (e) => {
+                    if (moving) {
+                        const currentPosition = e.pageX || e.touches[0].pageX;
+                        const diffX = currentPosition - mouseLastPosition;
+                        if (currentPosition - lastPageX > 0) {
+                            if (transformValue >= 0) {
+                                return;
+                            }
+                        } else {
+                            const maxTranslateX = -(cardContainer.scrollWidth - card.offsetWidth);
+                            if (transformValue <= maxTranslateX) {
+                                return;
+                            }
+                        }
+                        transformValue = parseInt(transform) + diffX;
+                        cardContainer.style.transform = `translateX(${transformValue}px)`;
+                    }
+                    lastPageX = e.pageX || e.touches[0].pageX;
+                };
+
+                const gestureEnd = () => (moving = false);
+
+                if (window.PointerEvent) {
+                    card.addEventListener("pointerdown", gestureStart);
+                    card.addEventListener("pointermove", gestureMove);
+                    card.addEventListener("pointerup", gestureEnd);
+                    card.addEventListener("pointerleave", gestureEnd);
+                } else {
+                    card.addEventListener("mousedown", gestureStart);
+                    card.addEventListener("mousemove", gestureMove);
+                    card.addEventListener("mouseup", gestureEnd);
+                    card.addEventListener("mouseleave", gestureEnd);
+
+                    card.addEventListener("touchstart", gestureStart);
+                    card.addEventListener("touchmove", gestureMove);
+                    card.addEventListener("touchend", gestureEnd);
+                }
+            }
+
+            // Inicializa os carrosséis de serviços
+            const serviceCategories = document.querySelectorAll('.service-category');
+            serviceCategories.forEach((category, index) => {
+                initCarousel(`.service-category:nth-of-type(${index + 1})`);
+            });
+
+            // Carrossel dos criadores
+            initCarousel("#creators");
+
+        });
+    </script>
 </body>
 </html>
